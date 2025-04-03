@@ -4,12 +4,20 @@
     <name>pycharm-caret-type</name>
     <vendor>iamdianaaa</vendor>
 
+    <description><![CDATA[
+      This is a plugin for PyCharm that displays the type of a variable under the caret in the status bar.
+    ]]></description>
+
     <depends>com.intellij.modules.platform</depends>
+    <depends>PythonCore</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.iamdianaaa.pycharmcarettype.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.iamdianaaa.pycharmcarettype.startup.MyProjectActivity" />
+        
+        <statusBarWidgetFactory implementation="com.github.iamdianaaa.pycharmcarettype.statusbar.CaretTypeStatusBarWidgetFactory"
+                                id="CaretTypeStatusBar"/>
     </extensions>
 </idea-plugin>

@@ -44,6 +44,8 @@ dependencies {
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
 
+        plugin("PythonCore:242.23726.103")
+
         testFramework(TestFrameworkType.Platform)
     }
 }
@@ -132,6 +134,10 @@ tasks {
     publishPlugin {
         dependsOn(patchChangelog)
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
 }
 
 intellijPlatformTesting {
