@@ -11,6 +11,8 @@ import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
 import java.awt.Component
+import com.intellij.openapi.application.ApplicationManager
+
 
 class CaretTypeStatusBarWidget(private val project: Project?) : StatusBarWidget {
     private var textType = ""
@@ -32,27 +34,24 @@ class CaretTypeStatusBarWidget(private val project: Project?) : StatusBarWidget 
     private fun updateType(editor: Editor?) {
         if (editor == null || project == null) {
             textType = ""
-            if (statusBar != null) {
-                statusBar!!.updateWidget(ID())
-            }
+            statusBar?.updateWidget(ID())
             return
         }
 
-        val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return
 
-        val caretPosition = editor.caretModel.offset
-        val element = psiFile.findElementAt(caretPosition) ?: return
+        ApplicationManager.getApplication().runReadAction {
+            val psiFile = PsiManager.getInstance(project).findFile(editor.virtualFile) ?: return@runReadAction
+            val caretPosition = editor.caretModel.offset
+            val element = psiFile.findElementAt(caretPosition) ?: return@runReadAction
 
-        textType = ""
+            textType = ""
+            val variable = findReference(editor, element)
 
-        val variable = findReference(editor, element)
+            if (variable != null) {
+                textType = getPythonType(variable)
+            }
 
-        if (variable != null) {
-            textType = getPythonType(variable)
-        }
-
-        if (statusBar != null) {
-            statusBar!!.updateWidget(ID())
+            statusBar?.updateWidget(ID())
         }
     }
 
@@ -133,7 +132,7 @@ class CaretTypeStatusBarWidget(private val project: Project?) : StatusBarWidget 
 
     private fun isPythonCommonKeyword(text: String?): Boolean {
         val commonKeywords = arrayOf(
-            "if", "else", "elif", "for", "while", "def", "class",
+            "if", "else", "elif", "for", "while", "def", "class", "is", "True", "False",
             "return", "import", "from", "as", "try", "except", "finally"
         )
 
@@ -172,8 +171,6 @@ class CaretTypeStatusBarWidget(private val project: Project?) : StatusBarWidget 
         this.statusBar = statusBar
 
         val editor = FileEditorManager.getInstance(project!!).selectedTextEditor
-        if (editor != null) {
-            updateType(editor)
-        }
+        editor?.let { updateType(it) }
     }
 }
