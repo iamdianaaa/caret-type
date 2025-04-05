@@ -138,6 +138,10 @@ tasks {
     buildPlugin {
         archiveFileName.set("caret-type-${project.version}.zip")
     }
+
+    verifyPlugin {
+        jvmArgs = listOf("-Xmx2g")
+    }
 }
 
 tasks.withType<JavaCompile> {
