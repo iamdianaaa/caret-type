@@ -1,9 +1,9 @@
-package com.github.iamdianaaa.pycharmcarettype.services
+package com.github.iamdianaaa.carettype.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
-import com.github.iamdianaaa.pycharmcarettype.MyBundle
+import com.github.iamdianaaa.carettype.MyBundle
 
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {

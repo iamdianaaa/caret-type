@@ -1,4 +1,4 @@
-package com.github.iamdianaaa.pycharmcarettype.toolWindow
+package com.github.iamdianaaa.carettype.toolWindow
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -8,8 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.iamdianaaa.pycharmcarettype.MyBundle
-import com.github.iamdianaaa.pycharmcarettype.services.MyProjectService
+import com.github.iamdianaaa.carettype.MyBundle
+import com.github.iamdianaaa.carettype.services.MyProjectService
 import javax.swing.JButton
 
 

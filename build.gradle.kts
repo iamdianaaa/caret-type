@@ -134,6 +134,10 @@ tasks {
     publishPlugin {
         dependsOn(patchChangelog)
     }
+
+    buildPlugin {
+        archiveFileName.set("caret-type-${project.version}.zip")
+    }
 }
 
 tasks.withType<JavaCompile> {

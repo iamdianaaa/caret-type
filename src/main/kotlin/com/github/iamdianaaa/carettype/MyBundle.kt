@@ -1,4 +1,4 @@
-package com.github.iamdianaaa.pycharmcarettype
+package com.github.iamdianaaa.carettype
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

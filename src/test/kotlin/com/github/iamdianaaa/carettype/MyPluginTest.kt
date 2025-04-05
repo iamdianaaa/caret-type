@@ -1,4 +1,4 @@
-package com.github.iamdianaaa.pycharmcarettype
+package com.github.iamdianaaa.carettype
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.openapi.components.service
@@ -6,7 +6,7 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.testFramework.TestDataPath
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.util.PsiErrorElementUtil
-import com.github.iamdianaaa.pycharmcarettype.services.MyProjectService
+import com.github.iamdianaaa.carettype.services.MyProjectService
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
 class MyPluginTest : BasePlatformTestCase() {

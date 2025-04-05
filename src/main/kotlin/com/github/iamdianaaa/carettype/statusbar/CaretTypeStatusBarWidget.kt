@@ -1,4 +1,4 @@
-package com.github.iamdianaaa.pycharmcarettype.statusbar
+package com.github.iamdianaaa.carettype.statusbar
 
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.EditorFactory

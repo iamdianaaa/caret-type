@@ -1,4 +1,4 @@
-package com.github.iamdianaaa.pycharmcarettype.startup
+package com.github.iamdianaaa.carettype.startup
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
